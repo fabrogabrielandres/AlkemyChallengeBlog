@@ -3,7 +3,7 @@
 
 const initialState={
     auth:false,
-    token:"",
+    token:null,
     loading:false,
 }
 
@@ -21,6 +21,10 @@ export const loginReducers = (state = initialState, action) => {
         case "USER_LOGIN_FAILED":
             return {
                 ...state, auth:false, loading:false
+            }
+        case "USER_LOGOUT_SUCCES":
+            return{
+                initialState
             }
         default:
             return state

@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
-import { loginUserAction } from './actions/actionLogin';
+import { loginUserAction, logOutUserAction } from './actions/actionLogin';
 import { navRouter } from './Routes/navRouter';
 import { PrivateRoute } from './Routes/PrivateRoute';
 import { PublicRoute } from './Routes/PublicRoute';
 import { LoginScreen } from './Screens/LoginScreen'
-
 
 
 export const App = () => {
@@ -14,8 +13,11 @@ export const App = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     const token = localStorage.getItem("token")
+
     if (token) {
       dispatch(loginUserAction(token))
+    }else{
+      dispatch(logOutUserAction())
     }
   }, [dispatch])
 
