@@ -1,13 +1,28 @@
 
-  
- 
 
 
- export const loginReducers = (state ={} , action) => {
-     switch (action.type) {
-         case 'ACTION_TYPE':
-             return 
-         default:
-             return state
-     }
- }
+const initialState={
+    auth:false,
+    token:"",
+    loading:false,
+}
+
+export const loginReducers = (state = initialState, action) => {
+    switch (action.type) {
+        case "USER_LOGIN_REQUEST":
+            return{ 
+                ...state,
+                loading:true
+             } 
+        case "USER_LOGIN_SUCCESS":
+            return {
+                ...state, auth:true, loading:false, token:action.payload  
+            }
+        case "USER_LOGIN_FAILED":
+            return {
+                ...state, auth:false, loading:false
+            }
+        default:
+            return state
+    }
+}
