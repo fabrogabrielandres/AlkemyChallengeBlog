@@ -24,7 +24,7 @@ export const HomeScreen = () => {
 
         <div className="mt-4 row">
             {datos.map(dato=>
-                <DatoTitle key={dato.id} title={dato.title} />
+                <DatoTitle key={dato.id} dato={dato} />
             )}
 
         </div >
