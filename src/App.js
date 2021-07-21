@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
-import { loginUserAction, logOutUserAction } from './actions/actionLogin';
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { loginUserAction } from './actions/actionLogin';
 import { navRouter } from './Routes/navRouter';
 import { PrivateRoute } from './Routes/PrivateRoute';
 import { PublicRoute } from './Routes/PublicRoute';
@@ -11,42 +11,31 @@ import { LoginScreen } from './Screens/LoginScreen'
 export const App = () => {
 
   const dispatch = useDispatch()
-  useEffect(() => {
-    const token = localStorage.getItem("token")
+  const token = localStorage.getItem("token")
 
-    if (token) {
-      dispatch(loginUserAction(token))
-    }else{
-      dispatch(logOutUserAction())
-      console.log("se desologeo");
-    }
-  }, [dispatch])
-
-  const {auth} = useSelector(state => state.loginReducers)
-  console.log(auth);
+  if (token) {
+    dispatch(loginUserAction(token))
+  }
+  const auth = useSelector(state => state.loginReducers.auth)
 
 
   return (
-    <div>
-      <Router>
+    <Router>
+      <div>
         <Switch>
           <PublicRoute
             exact
-            component={LoginScreen}
             path="/login"
-            isAuthenticated={auth} 
-          />
-
-          <PrivateRoute
-            component={navRouter}
-            path="/"
+            component={LoginScreen}
             isAuthenticated={auth}
           />
-
-          <Redirect to="/" />
-
+          <PrivateRoute
+            path="/"
+            component={navRouter}
+            isAuthenticated={auth}
+          />
         </Switch>
-      </Router>
-    </div>
+      </div>
+    </Router>
   )
 }
