@@ -18,6 +18,7 @@ export const App = () => {
       dispatch(loginUserAction(token))
     }else{
       dispatch(logOutUserAction())
+      console.log("se desologeo");
     }
   }, [dispatch])
 
@@ -42,7 +43,7 @@ export const App = () => {
             isAuthenticated={auth}
           />
 
-          <Redirect to="/home" />
+          <Redirect to="/" />
 
         </Switch>
       </Router>
