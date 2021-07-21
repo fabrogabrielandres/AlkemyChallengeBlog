@@ -10,5 +10,6 @@ export const loginUserAction = (token) => dispatch => {
 }
 
 export const logOutUserAction = () => dispatch => {
-    dispatch({ type: "USER_LOGOUT_SUCCES" })
+    dispatch({ type: "USER_LOGOUT_SUCCESS" })
+    localStorage.clear();
 }

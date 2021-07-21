@@ -22,7 +22,7 @@ export const loginReducers = (state = initialState, action) => {
             return {
                 ...state, auth:false, loading:false
             }
-        case "USER_LOGOUT_SUCCES":
+        case "USER_LOGOUT_SUCCESS":
             return{
                 initialState
             }

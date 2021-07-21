@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
 import { loginUserAction } from './actions/actionLogin';
 import { navRouter } from './Routes/navRouter';
 import { PrivateRoute } from './Routes/PrivateRoute';
@@ -34,6 +34,7 @@ export const App = () => {
             component={navRouter}
             isAuthenticated={auth}
           />
+          <Redirect to="/" />
         </Switch>
       </div>
     </Router>

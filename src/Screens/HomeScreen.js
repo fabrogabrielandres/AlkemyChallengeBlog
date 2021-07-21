@@ -1,29 +1,19 @@
 
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { DatoTitle } from '../component/DatoTitle'
 
-export const HomeScreen = () => {
-    const [datos, setDatos] = useState([])
-    useEffect(() => {
-        const petitionGet = async () => {
-            try {
-                const responce = await axios.get("https://jsonplaceholder.typicode.com/posts")
-                const data = responce.data
-                setDatos(data);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        petitionGet()
-    }, [])
 
-    console.log(datos);
+export const HomeScreen = () => {
+
+    const dispatch = useDispatch()
     
+    const datos = useSelector(state => state.crudReducers.datos)
+
     return (
 
         <div className="mt-4 row">
-            {datos.map(dato=>
+            {datos.map(dato =>
                 <DatoTitle key={dato.id} dato={dato} />
             )}
 

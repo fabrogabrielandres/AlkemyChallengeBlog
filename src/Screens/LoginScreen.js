@@ -7,14 +7,19 @@ import { loginUserAction } from '../actions/actionLogin'
 
 
 
+import { getAllPostAction } from '../actions/actionCrud'
+
+
 export const LoginScreen = () => {
 
     const dispatch = useDispatch()
 
-    const onSubmit =async values => {
-        const resp = await  axios.post("http://challenge-react.alkemy.org/",values)
-        const {token}=resp.data
+    const onSubmit = async values => {
+        const resp = await axios.post("http://challenge-react.alkemy.org/", values)
+        const { token } = resp.data
         dispatch(loginUserAction(token))
+        dispatch(getAllPostAction())
+    
     }
 
     const formik = useFormik({

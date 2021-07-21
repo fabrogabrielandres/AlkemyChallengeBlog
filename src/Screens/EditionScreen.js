@@ -1,9 +1,10 @@
 import React from 'react'
 
-export const EditionScreen = () => {
+export const EditionScreen = ({dato}) => {
+    console.log(dato);
     return (
         <div>
-            edicion
+            
         </div>
     )
 }

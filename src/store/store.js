@@ -1,11 +1,14 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk"
+import { crudReducers } from '../reducers/crudReducers';
 import { loginReducers } from '../reducers/loginReducers';
 
 
 const reducer = combineReducers({
-    loginReducers    
+    loginReducers,
+    crudReducers
+        
 })
 
 

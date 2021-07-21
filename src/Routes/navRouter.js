@@ -5,19 +5,18 @@ import { HomeScreen } from "../Screens/HomeScreen"
 
 
 export const navRouter = () => {
-    
+
 
     return (
         <>
-            <NavBar/>
-        <div > 
-            <Switch>
-                <Route exact component={HomeScreen} path="/home"/>
-                <Route exact component={EditionScreen} path="/edition"/>
-                
-                <Redirect to="/home" />
-            </Switch>
-        </div>
+            <NavBar />
+            <div className="m-4">
+                <Switch>
+                    <Route  component={HomeScreen} path="/home" />
+                    <Route  component={EditionScreen} path="/edition" />
+                    <Redirect to="/home" />                   
+                </Switch>
+            </div>
         </>
     )
 }
