@@ -13,3 +13,4 @@ export const logOutUserAction = () => dispatch => {
     dispatch({ type: "USER_LOGOUT_SUCCESS" })
     localStorage.clear();
 }
+
