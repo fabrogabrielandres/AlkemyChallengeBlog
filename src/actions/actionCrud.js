@@ -25,3 +25,7 @@ export const deleteAction=(id)=> async dispatch => {
     }
 }
 
+export const selecDato=(dato)=> dispatch=>{
+    dispatch({type:"CRUD_SELECT_DATO",payload:dato})    
+}
+

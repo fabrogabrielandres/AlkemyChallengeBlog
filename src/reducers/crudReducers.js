@@ -1,6 +1,7 @@
 
 const initialState={
-    datos:[]
+    datos:[],
+    datoEdit:{}
 }
 
 export const crudReducers = (state =initialState , action) => {
@@ -11,6 +12,8 @@ export const crudReducers = (state =initialState , action) => {
             return {...state}
         case "CRUD_DELETE_DATO":
             return {...state, datos:state.datos.filter(dato=>dato.id!==action.payload)}
+        case "CRUD_SELECT_DATO":
+            return {...state, datoEdit:action.payload}
         default:
             return state
     }

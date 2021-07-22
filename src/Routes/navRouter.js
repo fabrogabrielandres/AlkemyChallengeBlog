@@ -12,8 +12,10 @@ export const navRouter = () => {
             <NavBar />
             <div className="m-4">
                 <Switch>
-                    <Route  component={HomeScreen} path="/home" />
-                    <Route  component={EditionScreen} path="/edition" />
+                    <Route component={HomeScreen} path="/home" />
+                    <Route component={EditionScreen} path="/edition/:id" />
+                    <Route component={EditionScreen} path="/edition" />
+
                     <Redirect to="/home" />                   
                 </Switch>
             </div>

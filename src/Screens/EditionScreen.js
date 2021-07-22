@@ -1,10 +1,21 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { Form } from '../component/Form';
 
-export const EditionScreen = ({dato}) => {
-    console.log(dato);
+export const EditionScreen = () => {
+
+    
+    const datoEdit= useSelector(state => state.crudReducers.datoEdit)
+    console.log(datoEdit);
+
+
     return (
-        <div>
-            
-        </div>
-    )
+        <>
+
+        <h1>buscar</h1>
+        <Form />
+
+
+        </>
+    );
 }

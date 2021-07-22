@@ -4,10 +4,8 @@ import { useFormik } from 'formik'
 import { initialValues, validationSchema } from '../helpers/HelperLoginSchema'
 import { useDispatch } from 'react-redux'
 import { loginUserAction } from '../actions/actionLogin'
-
-
-
 import { getAllPostAction } from '../actions/actionCrud'
+
 
 
 export const LoginScreen = () => {
@@ -18,7 +16,7 @@ export const LoginScreen = () => {
         const resp = await axios.post("http://challenge-react.alkemy.org/", values)
         const { token } = resp.data
         dispatch(loginUserAction(token))
-        dispatch(getAllPostAction())
+        dispatch(getAllPostAction())       
     
     }
 

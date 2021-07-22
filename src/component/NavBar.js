@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { logOutUserAction } from '../actions/actionLogin'
-
+import { NavLink } from "react-router-dom";
 
 export const NavBar = () => {
 
@@ -13,8 +13,8 @@ export const NavBar = () => {
 
         <nav className="navbar navbar-dark bg-primary">
             <div className="container">
-                <a className="navbar-brand" href="/home">Home</a>
-                <a className="navbar-brand" href="/edition">Form-Edition</a>
+                <NavLink className="navbar-brand" to="/home">Home</NavLink>
+                <NavLink className="navbar-brand" to="/edition">Form-Edition</NavLink>
                 <button className="btn btn-primary" onClick={cerrar}>Log-Out</button>
             </div>
         </nav>

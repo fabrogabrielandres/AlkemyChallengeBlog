@@ -1,16 +1,21 @@
 
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteAction } from '../actions/actionCrud'
+import { useHistory } from 'react-router-dom'
+import { deleteAction, selecDato } from '../actions/actionCrud'
 import { ModalButton } from './ModalButton'
 
-export const DatoTitle = ({ dato }) => {
-
-
-    const dispatch = useDispatch()
+export const CardDatos = ({ dato }) => {
     
+    
+    const dispatch = useDispatch()
+    const history=useHistory()
 
     const  borrar =()=>dispatch(deleteAction(dato.id))
+    const editar=(dato)=>{ 
+        history.push(`/edition/${dato.id}`)
+        dispatch(selecDato(dato))
+     } 
     
     return (
             <div className="col-12 col-md-6 col-lg-4 mt-3">
@@ -18,8 +23,8 @@ export const DatoTitle = ({ dato }) => {
                     <div className="card-body">
                         <p className="card-title">{dato.title}</p>
 
-                        <button className="btn btn-primary m-1">Edit</button>
-                        <button className="btn btn-primary m-1" onClick={borrar}>Delete</button>
+                        <button className="btn btn-secondary m-1" onClick={()=>editar(dato)}>Edit</button>
+                        <button className="btn btn-danger m-1" onClick={borrar}>Delete</button>
                         <ModalButton dato={dato} />
 
                     </div>
