@@ -2,7 +2,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { deleteAction, selecDato } from '../actions/actionCrud'
+import { deleteAction, selecDatoAction } from '../actions/actionCrud'
 import { ModalButton } from './ModalButton'
 
 export const CardDatos = ({ dato }) => {
@@ -14,7 +14,7 @@ export const CardDatos = ({ dato }) => {
     const  borrar =()=>dispatch(deleteAction(dato.id))
     const editar=(dato)=>{ 
         history.push(`/edition/${dato.id}`)
-        dispatch(selecDato(dato))
+        dispatch(selecDatoAction(dato))
      } 
     
     return (

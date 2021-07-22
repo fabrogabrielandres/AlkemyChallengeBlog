@@ -1,9 +1,14 @@
 import React from 'react'
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { editDatoAction } from '../actions/actionCrud';
+import { useHistory } from 'react-router-dom';
 
 export const Form = ({ datoInitial }) => {
 
+const dispatch = useDispatch()
 
+const history=useHistory()
 
     const formik = useFormik({
         initialValues: {
@@ -12,7 +17,8 @@ export const Form = ({ datoInitial }) => {
             userId: datoInitial.userId,
         },
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            dispatch(editDatoAction(values))
+            history.push("/home")
         },
     });
 
@@ -26,7 +32,7 @@ export const Form = ({ datoInitial }) => {
                             Editar Datos
                         </h2>
                         <form onSubmit={formik.handleSubmit} >
-                            <div className="form-group">
+                            <div className="form-group mb-3 ">
                                 <label>Title</label>
                                 
                                 <input

@@ -14,6 +14,9 @@ export const crudReducers = (state =initialState , action) => {
             return {...state, datos:state.datos.filter(dato=>dato.id!==action.payload)}
         case "CRUD_SELECT_DATO":
             return {...state, datoEdit:action.payload}
+        case "CRUD_EDIT_ACTION":
+            return{ ...state, datos:state.datos.filter(dato=>dato.id===action.payload.id ? dato : action.payload ),datoEdit:{} }
+            // return{ ...state, datos:state.datos.filter(dato=>dato.id===action.payload.id ? action.payload : dato) }
         default:
             return state
     }

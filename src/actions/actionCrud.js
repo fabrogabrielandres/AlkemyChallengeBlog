@@ -25,7 +25,19 @@ export const deleteAction=(id)=> async dispatch => {
     }
 }
 
-export const selecDato=(dato)=> dispatch=>{
+export const selecDatoAction=(dato)=> dispatch=> {
     dispatch({type:"CRUD_SELECT_DATO",payload:dato})    
+}
+
+export const editDatoAction= (dato) =>async dispatch=> {
+
+    try {
+        const responce = await axios.patch(`https://jsonplaceholder.typicode.com/posts/:${dato.id},${dato}`)
+        dispatch({type:"CRUD_EDIT_ACTION",payload:dato})
+        console.log(responce);
+    } catch (error) {
+        
+    }
+
 }
 
