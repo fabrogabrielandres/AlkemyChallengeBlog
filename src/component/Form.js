@@ -1,26 +1,46 @@
 import React from 'react'
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { editDatoAction } from '../actions/actionCrud';
+import { clearDateAction, createDatoAction, editDatoAction } from '../actions/actionCrud';
 import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
 
 export const Form = ({ datoInitial }) => {
+    const dispatch = useDispatch()
+    const location = useLocation();
+    const { pathname } = location
+    const history = useHistory()
 
-const dispatch = useDispatch()
+    const initialValues = {
+        id: datoInitial.id,
+        title: datoInitial.title,
+        userId: datoInitial.userId,
+        body: datoInitial.body
+    }
 
-const history=useHistory()
-
+    
     const formik = useFormik({
-        initialValues: {
-            id: datoInitial.id,
-            title: datoInitial.title,
-            userId: datoInitial.userId,
-        },
+        initialValues,
         onSubmit: values => {
-            dispatch(editDatoAction(values))
-            history.push("/home")
-        },
+            if(pathname==="/create"){
+                dispatch(createDatoAction(values))
+                dispatch(clearDateAction())
+                history.push("/home")
+            }else
+            {
+                dispatch(editDatoAction(values))
+                dispatch(clearDateAction())
+                history.push("/home")
+                      
+            }
+        }
     });
+
+
+
+    
+
+
 
 
     return (
@@ -29,12 +49,12 @@ const history=useHistory()
                 <div className="card">
                     <div className="card-body">
                         <h2 className="text-center mb-4 font-weight-bold">
-                            Editar Datos
+                            {(pathname !== "/create") ? "Edit Dats" : "Create Form"}
                         </h2>
                         <form onSubmit={formik.handleSubmit} >
                             <div className="form-group mb-3 ">
                                 <label>Title</label>
-                                
+
                                 <input
                                     className="form-control"
                                     id="title"
@@ -43,12 +63,22 @@ const history=useHistory()
                                     onChange={formik.handleChange}
                                     value={formik.values.title}
                                 />
+
+                                <label>Body</label>
+                                <input
+                                    className="form-control"
+                                    id="body"
+                                    name="body"
+                                    type="text"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.body}
+                                />
                             </div>
 
                             <button
                                 type="submit"
                                 className="btn btn-primary font-weight-bold text-uppercase d-block w-100"
-                            >Guardar Cambios</button>
+                            >{(pathname !== "/create") ? "Save changes" : "Create"}</button>
                         </form>
                     </div>
                 </div>

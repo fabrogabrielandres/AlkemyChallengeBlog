@@ -7,14 +7,14 @@ export const NavBar = () => {
 
     const dispatch = useDispatch()
     const cerrar = () => dispatch(logOutUserAction())
-    
+
 
     return (
 
         <nav className="navbar navbar-dark bg-primary">
             <div className="container">
                 <NavLink className="navbar-brand" to="/home">Home</NavLink>
-                <NavLink className="navbar-brand" to="/edition">Form-Edition</NavLink>
+                <NavLink className="navbar-brand" to="/create">Create</NavLink>
                 <button className="btn btn-primary" onClick={cerrar}>Log-Out</button>
             </div>
         </nav>

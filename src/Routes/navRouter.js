@@ -15,6 +15,7 @@ export const navRouter = () => {
                     <Route component={HomeScreen} path="/home" />
                     <Route component={EditionScreen} path="/edition/:id" />
                     <Route component={EditionScreen} path="/edition" />
+                    <Route component={EditionScreen} path="/create"/>
 
                     <Redirect to="/home" />                   
                 </Switch>
