@@ -13,8 +13,8 @@ export const EditionScreen = () => {
         <>
             <Form datoInitial={datoInitial ? datoInitial :
                 datoInitial = {
-                    userId: uuid(),
-                    id: "",
+                    userId: "",
+                    id: uuid(),
                     title: "",
                     body: ""
                 }
